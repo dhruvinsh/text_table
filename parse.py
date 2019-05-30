@@ -107,6 +107,8 @@ class StringTableParser(object):
         self._transform_dict(datastore)
 
 
-parser = StringTableParser(data_file='data2.txt')
-parser.generate_row_table('name')
-print parser.parsed_data
+
+if __name__ == '__main__':
+    parser = StringTableParser(data_file='data.txt')
+    parser.generate_row_table('name')
+    print parser.parsed_data
