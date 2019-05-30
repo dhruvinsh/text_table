@@ -51,10 +51,13 @@ class StringTableParser(object):
                   headers_row: integer that define how many rows in data
                                is for heading. defaul is 1.
         """
-        self.data = None
         if data_file:
             with open(data_file, 'r') as f:
-                self.data = f.readlines() or data_list
+                self.data = f.readlines()
+        elif data_list:
+            self.data = data_list
+        else:
+            raise ValueError("Provide 'data_file' of 'data_list'")
 
         if self.data is None:
             raise ValueError("Provide 'data_file' of 'data_list'")
