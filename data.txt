@@ -1,0 +1,22 @@
+BLADE#  NAME                       SPEED_REDN(APPLIED)   SPEED_REDN(READ)      FAN1              FAN2              FAN3              FAN4
+                                                                               RPM      ALARM    RPM      ALARM    RPM      ALARM    RPM      ALARM
+1       XC01_FAN                   4                     0                     -1       0        -1       0        -1       0        -1       0
+2       XC02_FAN                   4                     4                     10016    0        9977     0        9982     0        10290    0
+3       XC03_FAN                   4                     0                     -1       0        -1       0        -1       0        -1       0
+4       XC04_FAN                   4                     4                     9862     0        10251    0        9921     0        10058    0
+5       XC05_FAN                   4                     4                     10256    0        10997    0        10197    0        13729    0
+6       XC06_FAN                   4                     4                     10273    0        10913    0        10197    0        13729    0
+7       XC07_FAN                   4                     0                     -1       0        -1       0        -1       0        -1       0
+8       XC08_FAN                   4                     0                     -1       0        -1       0        -1       0        -1       0
+41      CHASSIS_FANTRAY01(FC01)    3                     3                     4909     0        5021     0        5003     0
+41      CHASSIS_FANTRAY02(FC01)    3                     3                     4955     0        4883     0        4890     0
+41      CHASSIS_FANTRAY03(FC01)    3                     3                     4898     0        4991     0        4951     0
+41      CHASSIS_FANTRAY04(FC01)    4                     4                     4257     0        4282     0        4331     0
+41      CHASSIS_FANTRAY05(FC01)    4                     4                     4388     0        4527     0        4418     0
+41      CHASSIS_FANTRAY06(FC01)    4                     4                     4354     0        4393     0        4378     0
+42      CHASSIS_FANTRAY01(FC02)    3                     3                     4899     0        5019     0        5019     0
+42      CHASSIS_FANTRAY02(FC02)    3                     3                     4943     0        4885     0        4890     0
+42      CHASSIS_FANTRAY03(FC02)    3                     3                     4903     0        5006     0        4956     0
+42      CHASSIS_FANTRAY04(FC02)    4                     4                     4262     0        4282     0        4308     0
+42      CHASSIS_FANTRAY05(FC02)    4                     4                     4400     0        4506     0        4405     0
+42      CHASSIS_FANTRAY06(FC02)    4                     4                     4354     0        4393     0        4363     0
