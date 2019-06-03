@@ -1,6 +1,8 @@
 import re
 from collections import OrderedDict
 
+from exception import UniqueKeyRequired
+
 
 class StringTableParser(object):
     """A String table parser provide facility to parse data
@@ -51,16 +53,12 @@ class StringTableParser(object):
                   headers_row: integer that define how many rows in data
                                is for heading. defaul is 1.
         """
+        self.data = None
         if data_file:
             with open(data_file, 'r') as f:
                 self.data = f.readlines()
         elif data_list:
             self.data = data_list
-        else:
-            raise ValueError("Provide 'data_file' of 'data_list'")
-
-        if self.data is None:
-            raise ValueError("Provide 'data_file' of 'data_list'")
 
         self.headers_row = headers_row
         self.parsed_data = OrderedDict()
@@ -70,15 +68,6 @@ class StringTableParser(object):
         return string.lower().replace('#', '').replace('(', '_').replace(
             ')', '')
 
-    def _transform_dict(self, key):
-        """allow to manupulate table based on assinged key"""
-        new_dict = OrderedDict()
-        for idx, v in enumerate(self.parsed_data[key]):
-            new_dict[v] = row_data = OrderedDict()
-            for k in self.parsed_data.keys():
-                row_data[k] = self.parsed_data[k][idx]
-        self.parsed_data = new_dict
-
     def generate_column_table(self):
         """This method is responsible for generating the python object
         this is untransformed data.
@@ -86,6 +75,9 @@ class StringTableParser(object):
         table get generated in dictionary where table's header is key and value is
         list of column data
         """
+        if self.data is None:
+            raise ValueError("Provide 'data_file' of 'data_list'")
+
         search = re.finditer(r'[\w#()]+', self.data[0])
         headers = []
         for tag in search:
@@ -107,8 +99,14 @@ class StringTableParser(object):
         param: datastore: defines which column should be user as key and
                           values will be key, value pairs of other column"""
         self.generate_column_table()
-        self._transform_dict(datastore)
-
+        new_dict = OrderedDict()
+        for idx, v in enumerate(self.parsed_data[key]):
+            if v in new_dict:
+                raise UniqueKeyRequired('Transformation can be done over unique column value only')
+            new_dict[v] = row_data = OrderedDict()
+            for k in self.parsed_data.keys():
+                row_data[k] = self.parsed_data[k][idx]
+        self.parsed_data = new_dict
 
 
 if __name__ == '__main__':
